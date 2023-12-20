@@ -8,9 +8,16 @@ namespace App\Controllers;
 
 class Controller
 {
+    private $templates;
 
-    public function __construct()
+    public function __construct(\League\Plates\Engine $templates)
     {
-        echo "construct Controller";
+        $this->templates = $templates;
+    }
+
+
+    public  function getIndex($view)
+    {
+        return $this->templates->render($view);
     }
 }

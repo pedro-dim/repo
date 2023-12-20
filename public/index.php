@@ -1,26 +1,23 @@
 <?php
 
 
-require_once __DIR__ . '../../vendor/autoload.php';
+require_once  '../vendor/autoload.php';
 
 use App\Core\Router;
 use App\Database\Redis;
-use App\Database\Sqlite;
+use App\Database\SQLite;
 use App\Cache\RedisDatabaseCache;
 use App\Controllers\ApiController;
-
-
-$db = new Sqlite('../database.sqlite');
-
-// Prepend a base path if Predis is not available in your "include_path".
-
-
-$client = new \Predis\Client();
+use App\Database\Mysql;
+use  \Predis\Client;
 
 
 
-(new RedisDatabaseCache());
+require "../app/Routes/web.php";
 
 
-//  $client->set('name', 'Ricardo', 'EX', 10);
-// $value = $client->get('name');
+
+$database = new Mysql();
+
+$database->connect();
+$data = $database->query('SELECT * FROM  users');

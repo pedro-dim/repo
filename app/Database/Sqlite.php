@@ -3,8 +3,6 @@
 namespace App\Database;
 
 
-
-
 use App\Database\Database;
 
 
@@ -37,7 +35,7 @@ class SQLite extends Database
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute($params);
             return $stmt;
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             die("Query failed: " . $e->getMessage());
         }
     }
