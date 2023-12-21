@@ -5,19 +5,25 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
+require __DIR__ . '/../Core/container.php';
 
-class Controller
+use \League\Plates\Engine;
+
+abstract class Controller
 {
     private $templates;
 
-    public function __construct(\League\Plates\Engine $templates)
+    public function __construct(Engine $templates)
     {
-        $this->templates = $templates;
+
+
+        echo "constructor";
     }
 
 
-    public  function getIndex($view)
+    public static function view($view, $folder = 'Pages', $data = [])
     {
-        return $this->templates->render($view);
+        $templates = new \League\Plates\Engine(__DIR__ . '/../Views');
+        echo $templates->render($folder . DIRECTORY_SEPARATOR . $view, $data);
     }
 }

@@ -4,20 +4,14 @@
 require_once  '../vendor/autoload.php';
 
 use App\Core\Router;
-use App\Database\Redis;
-use App\Database\SQLite;
-use App\Cache\RedisDatabaseCache;
-use App\Controllers\ApiController;
-use App\Database\Mysql;
-use  \Predis\Client;
+use League\Plates\Engine;
+use App\Controllers\HomeController;
 
 
-
+require "../app/Core/container.php";
 require "../app/Routes/web.php";
 
 
+//dd($container);
 
-$database = new Mysql();
-
-$database->connect();
-$data = $database->query('SELECT * FROM  users');
+(new HomeController(new Engine()))::view('home', 'Pages', ["name" => "Pedro"]);
