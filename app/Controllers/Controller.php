@@ -15,15 +15,13 @@ abstract class Controller
 
     public function __construct(Engine $templates)
     {
-
-
-        echo "constructor";
+        $this->templates = new \League\Plates\Engine(__DIR__ . '/../Views');
     }
 
 
-    public static function view($view, $folder = 'Pages', $data = [])
+    public  function view($view, $folder = 'Pages', $data = [])
     {
-        $templates = new \League\Plates\Engine(__DIR__ . '/../Views');
-        echo $templates->render($folder . DIRECTORY_SEPARATOR . $view, $data);
+
+        echo $this->templates->render($folder . DIRECTORY_SEPARATOR . $view, $data);
     }
 }

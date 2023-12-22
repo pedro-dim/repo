@@ -53,7 +53,8 @@ class Mysql extends Database
     public function fetchAll($sql)
     {
         $stmt = $this->query($sql);
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        $stmt->execute();
+        dd($stmt->fetchAll(\PDO::FETCH_ASSOC));
     }
 
     public function fetch($sql, $params = [])

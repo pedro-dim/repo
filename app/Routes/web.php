@@ -1,19 +1,9 @@
 <?php
 
-
-
-use \League\Plates\Engine;
-
-
-
-
-
-// Create new Plates instance
-//$templates = new Engine(__DIR__ . '/../Views');
-//$templates->addFolder('pages', __DIR__ . '/../Views/pages/');
-//dd($templates);
+use App\Router\Router;
+use App\Controllers\HomeController;
 
 
 
 
-//echo $templates->render('home', ['name' => 'Jacinto']);
+(new Router)->get('/', [HomeController::class, 'index']);
