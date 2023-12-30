@@ -1,16 +1,19 @@
 <?php
 
-
 require_once  '../vendor/autoload.php';
 
 use App\Core\Router;
 use League\Plates\Engine;
 use App\Controllers\HomeController;
 
+use Illuminate\Hashing\BcryptHasher;
+
+
 require '../app/Core/bootstrap.php';
 
-echo $_SERVER['TESTER'];
-echo $_ENV['TESTER'];
+
+
+
 
 
 
